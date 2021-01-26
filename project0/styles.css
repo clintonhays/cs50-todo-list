@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   background-color: #eee;
   margin: 0;
   padding: 0;
@@ -33,7 +34,9 @@ ul {
   height: 100vh;
 }
 
-.title, .controls, .button {
+.title,
+.controls,
+.button {
   flex: none;
 }
 
@@ -57,10 +60,17 @@ ul {
 }
 
 .todo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 20px;
   border-bottom: 1px solid #333;
 }
 
 .todo-container:first-of-type {
   border-top: 1px solid #333;
+}
+
+.todo-text {
+  display: inline-block;
 }
