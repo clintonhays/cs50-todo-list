@@ -14,6 +14,12 @@ body {
   border: 1px solid white;
 } */
 
+/* Hidden */
+
+.hidden {
+  display: none;
+}
+
 /* Header */
 
 .title__header {
@@ -41,15 +47,18 @@ body {
   width: 55%;
   margin: 0 auto;
   margin-top: 2em;
+  text-align: initial;
   border: none;
   outline: none;
   color: rgb(75, 75, 75);
   background-color: transparent;
   border-bottom: 1px solid gray;
+  transition: width 0.3s ease-in;
 }
 
 .input__textInput:focus {
   border-bottom: 1px solid white;
+  /* width: 55%; */
 }
 
 .input__button {
@@ -57,7 +66,7 @@ body {
   padding: 0.5em 1.5em;
   border: none;
   outline: none;
-  background-color: #63fc8c;
+  background-color: #00fa42;
   font-size: 18px;
   font-weight: bold;
   color: white;
@@ -67,7 +76,7 @@ body {
 }
 
 .input__button:focus {
-  background-color: #63fc8c;
+  transform: scale(1.05);
 }
 
 .input__button:active {
@@ -80,6 +89,8 @@ body {
   width: 90%;
   margin: 0 auto;
   margin-top: 2em;
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
   /* border: 1px solid #adff2f; */
 }
 
@@ -94,11 +105,14 @@ body {
   align-items: center;
   justify-content: space-between;
   list-style-type: none;
-  border: 1px solid cyan;
+  /* border: 1px solid cyan; */
 }
 
 .list__items_item {
   margin: 1em 0;
+  padding: 0.5em;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 .list__items_item:first-of-type {
@@ -110,7 +124,7 @@ body {
 }
 
 .list__items__item_text {
-  margin-left: 0.5em;
+  margin: 0.5em;
 }
 
 /* List Item Buttons */
@@ -123,7 +137,8 @@ body {
 }
 
 .list__items__buttons_delete,
-.list__items__buttons_finished {
+.list__items__buttons_finished,
+.list__items__buttons_checked {
   height: 30px;
   width: 30px;
   padding: 0;
@@ -131,18 +146,31 @@ body {
   outline: none;
   font-size: 1.25em;
   font-weight: bold;
-  background-color: red;
+  background-color: #ff2f91;
   color: white;
+  border-radius: 5px;
   margin-right: 0.5em;
   cursor: pointer;
 }
 
 .list__items__buttons_finished {
-  font-size: 1.25em;
-  background-color: rgb(0, 214, 0);
+  background-color: #00fa42;
+}
+
+.list__items__buttons_checked {
+  background-color: rgb(0, 255, 242);
+}
+
+.list__items__buttons_checked i {
+  font-weight: bolder;
 }
 
 .list__items__buttons_delete:active,
 .list__items__buttons_finished:active {
   transform: scale(0.95);
+}
+
+.list__items__buttons_delete:focus,
+.list__items__buttons_finished:focus {
+  transform: scale(1.05);
 }
