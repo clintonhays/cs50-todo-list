@@ -21,12 +21,7 @@ todoItems.addEventListener("click", (e) => {
   const target = e.target;
   const item = target.parentNode.parentNode;
 
-  if (target.className === "list__items__buttons_delete") {
-    item.remove();
-
-    items.innerHTML--;
-    unfinished.innerHTML--;
-  }
+  removeTodo(target, item);
 
   if (target.className === "list__items__buttons_finished") {
     const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
@@ -71,7 +66,7 @@ todoItems.addEventListener("click", (e) => {
   }
 });
 
-function newTodo(value) {
+const newTodo = (value) => {
   const list = document.getElementById("listItems");
 
   const html = `
@@ -86,4 +81,13 @@ function newTodo(value) {
   `;
 
   list.innerHTML += html;
-}
+};
+
+const removeTodo = (value, node) => {
+  if (value.className === "list__items__buttons_delete") {
+    node.remove();
+
+    items.innerHTML--;
+    unfinished.innerHTML--;
+  }
+};
