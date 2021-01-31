@@ -23,26 +23,7 @@ todoItems.addEventListener("click", (e) => {
 
   removeTodo(target, item);
 
-  if (target.className === "list__items__buttons_finished") {
-    const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
-    const removeButtons = Array.from(document.querySelectorAll(".list__items__buttons_delete"));
-    const checkButtons = Array.from(document.querySelectorAll(".list__items__buttons_checked"));
-
-    for (const [index, button] of removeButtons.entries()) {
-      if (finishButtons.indexOf(target) === index) {
-        button.classList.toggle("hidden");
-      }
-    }
-
-    for (const [index, button] of checkButtons.entries()) {
-      if (finishButtons.indexOf(target) === index) {
-        button.classList.toggle("hidden");
-      }
-    }
-
-    target.classList.toggle("hidden");
-    unfinished.innerHTML--;
-  }
+  finishTodo(target);
 
   if (target.classList.contains("lni-checkmark")) {
     const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
@@ -88,6 +69,29 @@ const removeTodo = (value, node) => {
     node.remove();
 
     items.innerHTML--;
+    unfinished.innerHTML--;
+  }
+};
+
+const finishTodo = (value) => {
+  if (value.className === "list__items__buttons_finished") {
+    const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
+    const removeButtons = Array.from(document.querySelectorAll(".list__items__buttons_delete"));
+    const checkButtons = Array.from(document.querySelectorAll(".list__items__buttons_checked"));
+
+    for (const [index, button] of removeButtons.entries()) {
+      if (finishButtons.indexOf(value) === index) {
+        button.classList.toggle("hidden");
+      }
+    }
+
+    for (const [index, button] of checkButtons.entries()) {
+      if (finishButtons.indexOf(value) === index) {
+        button.classList.toggle("hidden");
+      }
+    }
+
+    value.classList.toggle("hidden");
     unfinished.innerHTML--;
   }
 };
