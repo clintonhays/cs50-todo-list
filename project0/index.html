@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TODO App</title>
     <link rel="stylesheet" type="text/css" href="./styles.css" />
   </head>
   <body>
-    <div class="container center">
-      <h1 class="center title">My TODO App</h1>
-      <div class="flow-right controls">
-        <span>Item count: <span id="item-count"></span></span>
-        <span>Unchecked count: <span id="unchecked-count"></span></span>
-      </div>
-      <button class="button center" onClick="newTodo()">New TODO</button>
-      <ul id="todo-list" class="todo-list"></ul>
+    <div class="container">
+      <header class="title">
+        <h1 class="title__header">My TODO App</h1>
+      </header>
+
+      <section class="tracking">
+        <div class="tracking__count">
+          <span>Item count: <span id="item-count"></span></span>
+          <span>Unchecked count: <span id="unchecked-count"></span></span>
+        </div>
+      </section>
+
+      <section class="input">
+        <label class="input__label" for="itemInput">What would you like to do?</label>
+        <input type="text" name="item" id="itemInput" class="input__textInput" placeholder="add item here" />
+        <button class="input__button" id="addButton">ADD</button>
+      </section>
+
+      <section class="list">
+        <ul id="listItems" class="list__items">
+          <li class="list__items_item">
+            <p class="list__items__item_text">Thing 1</p>
+            <div class="list__items__buttons">
+              <button class="list__items__buttons_finished">O</button>
+              <button class="list__items__buttons_delete">X</button>
+            </div>
+          </li>
+        </ul>
+      </section>
     </div>
     <script src="./script.js"></script>
   </body>

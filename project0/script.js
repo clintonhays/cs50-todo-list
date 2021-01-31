@@ -1,33 +1,25 @@
-const classNames = {
-  TODO_ITEM: "todo-container",
-  TODO_CHECKBOX: "todo-checkbox",
-  TODO_TEXT: "todo-text",
-  TODO_DELETE: "todo-delete",
-};
+// Global Variables
 
-const list = document.getElementById("todo-list");
-const itemCountSpan = document.getElementById("item-count");
-const uncheckedCountSpan = document.getElementById("unchecked-count");
-const checkboxes = document.querySelectorAll(".todo-checkbox");
+const itemInput = document.getElementById("itemInput");
+const addButton = document.getElementById("addButton");
+const list = document.getElementById("listItems");
 
-itemCountSpan.innerHTML = 0;
-let itemCount = 0;
+addButton.addEventListener("click", () => {
+  newTodo(itemInput.value);
 
-uncheckedCountSpan.innerHTML = 0;
-let uncheckedCount = 0;
+  itemInput.value = "";
+});
 
-function newTodo() {
-  const todo = prompt("What would you like...todo?");
-  const newLi = document.createElement("li");
-
-  newLi.innerHTML = `
-    <li class=${classNames.TODO_ITEM}>
-      <p class=${classNames.TODO_TEXT}>${todo}</p>
-      <input type="checkbox" class=${classNames.TODO_CHECKBOX}>
-    <li>
+function newTodo(value) {
+  const html = `
+    <li class="list__items_item">
+      <p class="list__items__item_text">${value}</p>
+      <div class="list__items__buttons">
+        <button class="list__items__buttons_finished">O</button>
+        <button class="list__items__buttons_delete">X</button>
+      </div>
+    </li>
   `;
 
-  list.appendChild(newLi);
-  itemCount++;
-  itemCountSpan.innerHTML = itemCount;
+  list.innerHTML += html;
 }
