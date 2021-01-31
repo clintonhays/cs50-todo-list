@@ -7,6 +7,8 @@ const todoItems = document.getElementById("listItems");
 items.innerHTML = 0;
 unfinished.innerHTML = 0;
 
+// Event Listeners
+
 addButton.addEventListener("click", () => {
   const itemInput = document.getElementById("itemInput");
 
@@ -22,29 +24,8 @@ todoItems.addEventListener("click", (e) => {
   const item = target.parentNode.parentNode;
 
   removeTodo(target, item);
-
   finishTodo(target);
-
-  if (target.classList.contains("lni-checkmark")) {
-    const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
-    const removeButtons = Array.from(document.querySelectorAll(".list__items__buttons_delete"));
-    const checkButtons = Array.from(document.querySelectorAll(".lni-checkmark"));
-
-    for (const [index, button] of finishButtons.entries()) {
-      if (checkButtons.indexOf(target) === index) {
-        button.classList.toggle("hidden");
-      }
-    }
-
-    for (const [index, button] of removeButtons.entries()) {
-      if (checkButtons.indexOf(target) === index) {
-        button.classList.toggle("hidden");
-      }
-    }
-
-    target.parentNode.classList.toggle("hidden");
-    unfinished.innerHTML++;
-  }
+  unfinishTodo(target);
 });
 
 const newTodo = (value) => {
@@ -63,6 +44,8 @@ const newTodo = (value) => {
 
   list.innerHTML += html;
 };
+
+// Functions
 
 const removeTodo = (value, node) => {
   if (value.className === "list__items__buttons_delete") {
@@ -93,5 +76,28 @@ const finishTodo = (value) => {
 
     value.classList.toggle("hidden");
     unfinished.innerHTML--;
+  }
+};
+
+const unfinishTodo = (value) => {
+  if (value.classList.contains("lni-checkmark")) {
+    const finishButtons = Array.from(document.querySelectorAll(".list__items__buttons_finished"));
+    const removeButtons = Array.from(document.querySelectorAll(".list__items__buttons_delete"));
+    const checkButtons = Array.from(document.querySelectorAll(".lni-checkmark"));
+
+    for (const [index, button] of finishButtons.entries()) {
+      if (checkButtons.indexOf(value) === index) {
+        button.classList.toggle("hidden");
+      }
+    }
+
+    for (const [index, button] of removeButtons.entries()) {
+      if (checkButtons.indexOf(value) === index) {
+        button.classList.toggle("hidden");
+      }
+    }
+
+    value.parentNode.classList.toggle("hidden");
+    unfinished.innerHTML++;
   }
 };
